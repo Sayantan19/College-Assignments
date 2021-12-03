@@ -1,0 +1,4 @@
+hello	everyone
+i am	a file
+this is codescracker
+there are total of 4 lines present here
