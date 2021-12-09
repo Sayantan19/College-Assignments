@@ -17,18 +17,44 @@ void display( struct Stack *);
 
 int main()
 {
-    int n;
+    int n,ch,choice,e;
     printf("Enter the number of elements in the stack: ");
     scanf("%d",&n);
     struct Stack * stack = createStack(n);
-    for(int i=0;i<n;i++)
+    do
     {
-        int c;
-        scanf("%d",&c);
-        push(stack,c);
-    }
-    printf("The elements of the stack are: ");
-    display(stack);
+        printf("1 for push\n2 for pop\n3 for peek\n4 for display\n Enter your choice: ");
+        scanf("%d",&ch);
+        switch (ch)
+        {
+            case 1:
+            printf("enter the element you want to push: ");
+            scanf("%d",&e);
+            push(stack,e);
+            break;
+            case 2:
+            printf("You chose to pop an element\n");
+            pop(stack);
+            break;
+            case 3:
+            printf("You chose to peek\n");
+            peek(stack);
+            break;
+            case 4:
+            printf("The elements of the stack are: ");
+            display(stack);
+            break;
+            default:
+            printf("Wrong choice\n");
+            break;
+        }
+        printf("Do you wish to continue?[1/0]: ");
+        scanf("%d",&choice);
+        if(!choice)
+            exit(0);
+    }while(1);
+    
+    return 0;
 }
 // creating the stack of the given capacity n
 struct Stack * createStack(int n)
@@ -60,7 +86,7 @@ void push(struct Stack * stack,int n)
 {
     if(isFull(stack))
     {
-        printf("Overflow");
+        printf("Overflow\n");
         return;
     }     
     stack->data[++stack->top]=n;
@@ -71,7 +97,7 @@ int pop(struct Stack * stack)
 {
     if(isEmpty(stack))
     {
-        printf("Underflow");
+        printf("Underflow\n");
         return 0;
     }
     return stack->data[stack->top--];
@@ -86,9 +112,12 @@ int peek(struct Stack * stack)
 
 void display(struct Stack * stack)
 {
+    struct Stack * s = createStack(stack->capacity);
+    s->top = stack->top;
+    s->data = stack->data;
     if(isEmpty(stack))
         return;
-    int x = stack->top;
-    printf("%d ",pop(stack));
-    display(stack);  
+    // int x = stack->top;
+    printf("%d \n",pop(s));
+    display(s);  
 }

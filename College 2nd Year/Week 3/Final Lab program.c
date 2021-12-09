@@ -2,21 +2,26 @@
 #include<stdlib.h>
 
 #define max(a,b) ((a>b)?(a):(b))
-#define min(a,b) ((a<b)?(a):(b))
+// #define min(a,b) ((a<b)?(a):(b))
 
-int * create(int);
-int * input(int *,int);
-int * represent(int  );
-int * sum(int *,int , int *,int);
-int * PolyDerivative(int *,int);
-void display(int *,int);
+struct Poly{
+    int deg;
+    float * coeff;
+};
+
+struct Poly * create(int);
+struct Poly * input(struct Poly *);
+struct Poly * represent(int  );
+struct Poly * sum(struct Poly *, struct Poly *);
+struct Poly * PolyDerivative(struct Poly *);
+void display(struct Poly *);
 
 int main()
 {
     int choice,deg1,deg2,deg3;
-    int * poly1; 
-    int * poly2;
-    int * poly3;
+    struct Poly * poly1; 
+    struct Poly * poly2;
+    struct Poly * poly3;
     do
     {
         printf("1 for Representing the Polynomial\n2 for finding Sum of 2 Polynomials\n3 for Finding the Derivative of a Polynomial\nEnter your choice: ");
@@ -27,35 +32,35 @@ int main()
             printf("Enter the degree of the polynomial: ");
             scanf("%d",&deg1);
             printf("Enter the elements of the polynomial\n");
-            poly1 = represent(deg1+1);
+            poly1 = represent(deg1);
             printf("The polynomial can be represented as : ");
-            display(poly1,deg1+1);
+            display(poly1);
             break;
             case 2:
             printf("Enter the degree of the first polynomial: ");
             scanf("%d",&deg1);
             printf("Enter the elements of the first polynomial\n");
-            poly1 = represent(deg1+1);
+            poly1 = represent(deg1);
             printf("Enter the degree of the second polynomial: ");
             scanf("%d",&deg2);
             printf("Enter the elements of the second polynomial\n");
-            poly2 = represent(deg2+1);
-            poly3 = sum(poly1,deg1+1,poly2,deg2+1);
+            poly2 = represent(deg2);
+            poly3 = sum(poly1,poly2);
             deg3 = max(deg1,deg2);
             printf("The sum of the polynomials are: ");
-            display(poly3,deg3+1);
+            display(poly3);
             break;
             case 3:
             printf("Enter the degree of the polynomial: ");
             scanf("%d",&deg1);
             printf("Enter the elements of the polynomial\n");
-            poly1 = represent(deg1+1);
-            poly2 = PolyDerivative(poly1,deg1+1);
+            poly1 = represent(deg1);
+            poly2 = PolyDerivative(poly1);
             printf("The sum of the polynomials are: ");
-            display(poly2,deg2+1);
+            display(poly2);
             break;
             default:
-            printf("Wrong choice!");
+            printf("Wrong choice!\n");
             break;
         }
         printf("Do you want to continue?[1/0]: ");
@@ -67,74 +72,78 @@ int main()
 
 }
 
-int * create(int n)
+struct Poly * create(int n)
 {
-    int *a = (int *)malloc(n * sizeof(int));
+    struct Poly *a = (struct Poly *)malloc(sizeof(struct Poly));
+    a->deg = n;
+    a->coeff = (float *)malloc(sizeof(float)*a->deg);
     return a;
 }
 
-int * input(int *a,int n)
+struct Poly * input(struct Poly * a)
 {
-    for(int i=0;i<n;i++)
+    for(int i=0;i<a->deg+1;i++)
     {
         printf("Enter the coefficient of x^%d: ",i);
-        scanf("%d",&a[i]);
+        scanf("%f",&a->coeff[i]);
     }
     return a;
 }
-int * represent(int deg)
+struct Poly * represent(int deg)
 {
-    int *a = create(deg);
-    a = input(a,deg);
+    struct Poly * a = create(deg);
+    a = input(a);
     return a;
 }
 
-void display(int *a,int n)
+void display(struct Poly * a)
 {
-    for(int i=n-1;i>=1;i--)
+    for(int i=a->deg;i>=1;i--)
     {
-        if(a[i]<0&&a[i]!=-1)
-            printf("%dx^%d ",a[i],i);
-        else if(a[i]==0)
+        if(a->coeff[i]<0&&a->coeff[i]!=-1)
+            printf("%0.1fx^%d ",a->coeff[i],i);
+        else if(a->coeff[i]==0)
             continue;
-        else if(a[i]>0 && i!=(n-1) && a[i]!=1)
-            printf("+%dx^%d ",a[i],i);
-        else if(a[i]==1)
+        else if(a->coeff[i]>0 && i!=(a->deg-1) && a->coeff[i]!=1)
+            printf("+%0.1fx^%d ",a->coeff[i],i);
+        else if(a->coeff[i]==1)
             printf("x^%d",i);
-        else if(a[i]==-1)
+        else if(a->coeff[i]==-1)
             printf("-x^%d",i);
         else 
-            printf("%dx^%d ",a[i],i);
+            printf("%0.1fx^%d ",a->coeff[i],i);
     }
-    if(a[0]<0)
-            printf("%d ",a[0]);
+    if(a->coeff[0]<0)
+            printf("%0.1f ",a->coeff[0]);
     else
-        printf("+%d ",a[0]);
+        printf("+%0.1f ",a->coeff[0]);
     printf("\n");
 }
 
-int * sum(int *a,int d1,int *b,int d2)
+struct Poly * sum (struct Poly * poly1, struct Poly * poly2)
 {
-    int *c = create(max(d1,d2));
-    if(d1>d2)
-        for(int i=0;i<=d1;i++)
-            c[i] = a[i]; 
+    struct Poly *c = create(max(poly1->deg,poly2->deg));
+    c->deg = max(poly1->deg,poly2->deg);
+    if(poly1->deg>poly2->deg)
+        for(int i=0;i<=poly1->deg;i++)
+            c->coeff[i] = poly1->coeff[i]; 
     else
-        for(int i=0;i<=d2;i++)
-            c[i] = b[i];
-    if(d1>d2)
-        for(int i=0;i<=d2;i++)
-            c[i] = c[i]+b[i]; 
+        for(int i=0;i<=poly2->deg;i++)
+            c->coeff[i] = poly2->coeff[i];
+    if(poly1->deg>poly2->deg)
+        for(int i=0;i<=poly2->deg;i++)
+            c->coeff[i] = c->coeff[i]+poly2->coeff[i]; 
     else
-        for(int i=0;i<=d1;i++)
-            c[i] = c[i]+a[i];
+        for(int i=0;i<=poly1->deg;i++)
+            c->coeff[i] = c->coeff[i]+poly1->coeff[i];
     return c;
 }
 
-int * PolyDerivative(int *poly,int deg)
+struct Poly * PolyDerivative(struct Poly *poly)
 {
-    int *der = create(deg);
-    for(int i=0;i<deg;i++)
-        der[i] = poly[i+1]*(i+1);
+    struct Poly *der = create(poly->deg);
+    der->deg = poly->deg-1;
+    for(int i=0;i<poly->deg;i++)
+        der->coeff[i] = poly->coeff[i+1]*(i+1);
     return der;
 }

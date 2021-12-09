@@ -86,10 +86,16 @@ int peek(struct Stack * s)
 
 void display(struct Stack * s)
 {
-    if(isEmpty(s))
+    struct Stack * s1 = create(s->capacity);
+    s1->data = s->data;
+    if(isEmpty(s1))
+    {
+        printf("The stack is empty!\n");
         return;
-    printf("%d ",peek(s));
-    pop(s);
-    display(s);
+    }    
+    // int x = stack->top;
+    printf("%d ",peek(s1));
+    pop(s1);
+    display(s1);  
 }
 
