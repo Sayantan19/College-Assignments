@@ -1,0 +1,2 @@
+int to anything
+string(anyhting other than numbers) cannot be coerced
