@@ -68,15 +68,9 @@ struct Queue * create(int n)
 
 int isEmpty(struct Queue * queue)
 {
-	if(queue->front>queue->rear)
-	{
-		queue->front=-1;
-		queue->rear=-1;
+	if(queue->front==-1)
 		return 1;
-	}
-	else if(queue->front<0)
-		return 1;
-	else 
+	else
 		return 0;
 }
 
@@ -100,9 +94,14 @@ void enqueue(struct Queue * queue)
 	}
 	if(queue->front==-1&&queue->rear==-1)
 	{
-		queue->front=0;
+		queue->front = 0;
+		queue->rear = 0;
 	}
-	queue->array[++queue->rear] = n;
+	else if(queue->rear == queue->capacity-1 && queue->front!=0)
+		queue->rear = 0;
+	else
+		queue->rear = (queue->rear+1)%queue->capacity;
+	queue->array[queue->rear] = n;
 }
 
 int dequeue(struct Queue * queue)
@@ -114,8 +113,13 @@ int dequeue(struct Queue * queue)
 	}
 	int x = queue->array[queue->front];
 	if(queue->front==queue->rear)
-		queue->front=queue->rear-1;
-	else
+	{
+		queue->front=-1;
+		queue->rear=-1;
+	}
+	else if(queue->front==queue->capacity-1)
+		queue->front=0;
+	else		
 		queue->front++;
 	return x;
 }
