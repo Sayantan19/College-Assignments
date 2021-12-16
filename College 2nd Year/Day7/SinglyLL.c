@@ -19,7 +19,7 @@ node * create(int n)
 
 int count()
 {
-	int c;
+	int c=0;
     if(head==NULL)
     {
         return 0;
@@ -34,7 +34,7 @@ int count()
             p = p->next; 
 		}
     }
-	return c;
+	return c+1;
 }
 
 int Search(int indexValue)
@@ -313,7 +313,7 @@ int main()
 				}
 				break;
 			case 3:
-				printf("The number of elements in the Linked list are: %d",count());
+				printf("The number of elements in the Linked list are: %d\n",count());
 				break;
 			case 4:
 				printf("Enter the value you want to search: ");
