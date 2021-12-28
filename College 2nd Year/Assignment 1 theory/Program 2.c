@@ -7,17 +7,27 @@ typedef struct Complexnumber
     float imaginary;
 }com;
 
-
+//Basic operations
 com * create();
 com * input(com *);
 void display(com *);
 
+//Operations to be chosen by user
+void Complex();
 com * add(com *, com *);
 com * subtract(com *,com *);
 com * multiply(com *,com *);
 com * divide(com *,com *);
 
+//Driver function
 int main()
+{
+    Complex();
+    return 0;
+}
+
+//Takes the choices from the user
+void Complex()
 {
     int choice;
     com *a,*b,*s,*d,*p,*q;
@@ -60,7 +70,6 @@ int main()
         if(ch==0)
             exit(0);
     }while(1);
-    return 0;
 }
 
 com * create()
