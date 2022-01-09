@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+//defining the stack
 typedef struct Stack
 {
     int top;
@@ -8,18 +9,23 @@ typedef struct Stack
     int capacity;
 }stack;
 
+//basic operations
 stack * create(int);
 int isFull(stack *);
 int isEmpty(stack *);
 
+//stack operations
 void push(stack *,int);
 int pop(stack * );
 int peek(stack *);
 
+//prototype for deleting the middle element of the stack
 stack * delMid(stack *);
 
+//protoype to display the stack
 void display(stack *);
 
+//driver function
 int main()
 {
     int n;
@@ -39,6 +45,7 @@ int main()
     display(delMid(stack));
 }
 
+//creates memory block for the stack and its elements
 stack * create(int n)
 {
     stack *p = (stack *)malloc(sizeof(stack));
@@ -48,6 +55,7 @@ stack * create(int n)
     return p;
 }
 
+//checks whether the stack is full
 int isFull(stack * s)
 {
     if(s->top == s->capacity-1)
@@ -56,6 +64,7 @@ int isFull(stack * s)
         return 0;
 }
 
+//checks whether the stack is empty
 int isEmpty(stack * s)
 {
     if(s->top==-1)
@@ -64,6 +73,7 @@ int isEmpty(stack * s)
     return 0;
 }
 
+//feeds an element in the stack
 void push(stack * s,int d)
 {
     if(isFull(s))
@@ -75,6 +85,7 @@ void push(stack * s,int d)
     // printf("Element pushed\n");
 }
 
+//removes the last entered element
 int pop(stack * s)
 {
     if(isEmpty(s))
@@ -85,6 +96,7 @@ int pop(stack * s)
     return s->data[s->top--]; 
 }
 
+//returns the last element in the stack
 int peek(stack * s)
 {
     if(isEmpty(s))
@@ -92,6 +104,7 @@ int peek(stack * s)
     return s->data[s->top];
 }
 
+//displays the stack elements
 void display(stack * s)
 {
     struct Stack * s1 = create(s->capacity);
@@ -108,6 +121,7 @@ void display(stack * s)
     display(s1);  
 }
 
+//deletes the middlemost element in the stack
 stack * delMid(stack * s)
 {
     int c=1;
