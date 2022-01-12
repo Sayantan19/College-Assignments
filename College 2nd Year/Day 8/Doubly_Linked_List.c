@@ -22,13 +22,14 @@ void display(node *);
 
 int main()
 {
+	//A few test cases by myself
 	int a;
 	// printf("Enter the element: ");
 	// scanf("%d",&a);
 	node *n = create(56);
 	n = InsertBeg(n,67);
-	n = InsertEnd(n, 69);
 	n = InsertEnd(n, 23);
+	n = InsertEnd(n, 69);
 	display(n);
 	// n = InsertMidAfter(n, 56, 23);
 	// display(n);
@@ -57,6 +58,8 @@ node *InsertBeg(node *head, int a)
 		temp->prev = head;
 		head = temp;
 	}
+	head->prev = NULL;
+    head->next->prev = head;
 	return head;
 }
 
