@@ -5,7 +5,9 @@ void Tower(int,char,char,char);
 
 int main()
 {
-    int n=3;
+    int n;
+    printf("Enter a value between 0 and 3: ");
+    scanf("%d",&n);
     char from = 'A',to = 'C',aux = 'B';
     Tower(n,from,to,aux);
 }

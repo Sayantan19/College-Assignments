@@ -16,10 +16,10 @@ int main()
     printf("Enter the element you wish to search for: ");
     scanf("%d",&search);
     int x = LinearSearch(a,n,search);
-    if(x==1)
-        printf("Element present in he array!\n");
+    if(x!=0)
+        printf("Element present in the array at position %d!\n",x);
     else
-        printf("Element not present in he array!\n");
+        printf("Element not present in the array!\n");
     return 0;
 }
 
@@ -38,14 +38,16 @@ int * input(int *a,int n)
 
 int LinearSearch(int * a,int n,int search)
 {
-    int * arr = create(n-1);
-    int x = a[0];
-    for(int i=0;i<n-1;i++)
-        arr[i] = a[i+1];
-    if(x==search)
-        return 1;
-    else if(n!=0)
-        return LinearSearch(arr,n-1,search);
-    else
-        return 0;
+    if(n>=0)
+    {
+       if(a[n-1] == search)
+        {
+            return n;
+        }
+        else
+        {
+            return LinearSearch(a, n-1, search);
+        }
+    }
+    return 0;
 }
