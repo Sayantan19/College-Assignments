@@ -117,7 +117,7 @@ void convert(char * c)
         //checking whether t is '('. if so, push it into stack
         else if(t=='(')
             push(stack,'(');
-        //checking t is '(' or not
+        //checking t is ')' or not
         else if(t==')')
         {
             //popping and placing in final exp till '(' or empty stack is encountered

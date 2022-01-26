@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "random": "c",
         "*.tcc": "c",
-        "bitset": "c"
+        "bitset": "c",
+        "tree implementation": "c"
     }
 }
