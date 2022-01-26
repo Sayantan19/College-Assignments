@@ -100,19 +100,29 @@ int ** transpose(int **a,int r)
 //Sorting the transposed matrix
 int ** sort(int **a,int r,int c)
 {
+    //Iteration begins from the first row index and goes on till the last row
     for (int i = 1; i < r; i++)
     {
         int t = 0;
+        //We are performing bubble sort here
+        //What we are doing is that we are again iteratively traversing from the 1st row
+        //to the second last row (because we are checking the row next to it too.
+        //So, to check overflow, we do this
         for (int j = 1; j < r - 1; j++)
         {
+            //Checking whether the row index of the next one
+            //is lesser than than the present one
             if (a[j][0] > a[j + 1][0])
             {
+                //swapping the row index
                 t = a[j][0];
                 a[j][0] = a[j + 1][0];
                 a[j + 1][0] = t;
+                //swapping the column index
                 t = a[j][1];
                 a[j][1] = a[j + 1][1];
                 a[j + 1][2] = t;
+                //Swapping the value
                 t = a[j][2];
                 a[j][2] = a[j + 1][2];
                 a[j + 1][2] = t;
