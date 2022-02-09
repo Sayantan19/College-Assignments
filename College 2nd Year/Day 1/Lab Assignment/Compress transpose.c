@@ -5,7 +5,7 @@ int ** input(int **,int,int);
 int ** represent(int **,int ,int);
 int nonzero(int **,int,int);
 int ** transpose(int **,int);
-int ** sort(int **,int, int);
+int ** sort(int **,int **);
 void display(int,int,int **);
 
 //Driver function
@@ -23,9 +23,16 @@ int main()
     int **rep;
     rep = represent(arr,r,c);
     // int r1 = nonzero(arr,r,c);
+    display((rep[0][2]+1),3,rep);
+    printf("\n");
+    printf("\n");
     int **trans;
-    trans = transpose(rep,(rep[0][2]+1));
-    trans = sort(trans,r,3);
+    trans = create(nonzero(arr,r,c)+1,3);
+    // trans = transpose(rep,(rep[0][2]+1));
+    // display((rep[0][2]+1),3,trans);
+    // printf("\n");
+    // printf("\n");
+    trans = sort(trans,rep);
     display((rep[0][2]+1),3,trans);
 }
 
@@ -98,34 +105,24 @@ int ** transpose(int **a,int r)
 }
 
 //Sorting the transposed matrix
-int ** sort(int **a,int r,int c)
+int ** sort(int **a,int ** b)
 {
-    //Iteration begins from the first row index and goes on till the last row
-    for (int i = 1; i < r; i++)
+    a[0][0] = b[0][1];
+    a[0][1] = b[0][0];
+    a[0][2] = b[0][2];
+
+    int k = 1;
+    int n = b[0][2];
+    for(int i=0;i<b[0][1];i++)
     {
-        int t = 0;
-        //We are performing bubble sort here
-        //What we are doing is that we are again iteratively traversing from the 1st row
-        //to the second last row (because we are checking the row next to it too.
-        //So, to check overflow, we do this
-        for (int j = 1; j < r - 1; j++)
+        for(int j=1;j<=n;j++)
         {
-            //Checking whether the row index of the next one
-            //is lesser than than the present one
-            if (a[j][0] > a[j + 1][0])
+            if(i==b[j][1])
             {
-                //swapping the row index
-                t = a[j][0];
-                a[j][0] = a[j + 1][0];
-                a[j + 1][0] = t;
-                //swapping the column index
-                t = a[j][1];
-                a[j][1] = a[j + 1][1];
-                a[j + 1][2] = t;
-                //Swapping the value
-                t = a[j][2];
-                a[j][2] = a[j + 1][2];
-                a[j + 1][2] = t;
+                a[k][0] = i;
+                a[k][1] = b[j][0];
+                a[k][2] = b[j][2];
+                k++;
             }
         }
     }
