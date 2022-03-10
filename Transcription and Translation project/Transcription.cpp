@@ -21,7 +21,7 @@ void Template(string s)
             
         }
     }
-    cout<<"The required RNA strand is: "<<RNA;
+    cout<<"The required RNA strand is: "<<RNA<<"\n";
 }
 
 void Coding(string s)
@@ -36,16 +36,16 @@ void Coding(string s)
         else
             RNA = RNA + c;
     }
-    cout<<"The required RNA strand is: "<<RNA;
+    cout<<"The required RNA strand is: "<<RNA<<"\n";
 }
 
 int main()
 {
     int a;
     string code;
-    cout<<"Enter whether the DNA sequence you want to transcribe belongs to the template or coding strand[1 for template, 2 for coding";
+    cout<<"Enter whether the DNA sequence you want to transcribe belongs to the template or coding strand[1 for template, 2 for coding]: ";
     cin>>a;
-    cout<<"Enter the Genetic Sequence";
+    cout<<"Enter the Genetic Sequence: ";
     cin>>code;
     switch (a)
     {
@@ -56,6 +56,6 @@ int main()
         Coding(code);
         break;
     default:
-        cout<<"You entered the wrong choice!";
+        cout<<"You entered the wrong choice!\n";
     }
 }
