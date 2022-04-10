@@ -14,7 +14,7 @@ int recursiveBinary(int arr[],int low,int high,int search)
 	else if(arr[middle]<search)
         recursiveBinary(arr,middle+1,high,search);
         
-    else
+    else if(arr[middle]>search)
         recursiveBinary(arr,low,middle,search);
 }
 
@@ -29,7 +29,7 @@ int main()
 	    scanf("%d",&arr[i]);
 	printf("Enter the number to be searched\n");
     scanf("%d",&search);
-    index = recursiveBinary(arr,0,n,search);
+    index = recursiveBinary(arr,0,n-1,search);
     if(index==-1)
     	printf("Not present \n");
     else
