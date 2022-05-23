@@ -11,9 +11,9 @@ case "$x" in
    ;;
    "S") c=`expr $a - $b` 
    ;;
-   "M") c=`expr $a \* $b` 
+   "M") c=$( echo "$a * $b" | bc ) 
    ;;
-   "D") c=`expr $a / $b` 
+   "D") c=$( echo " $a / $b" | bc ) 
    ;;
 esac
 echo $c
