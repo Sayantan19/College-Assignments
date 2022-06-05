@@ -12,7 +12,7 @@ typedef struct Graph
 graph *createGraph(int, int);
 graph *insertEdge(graph *, int, int);
 void BFSMain(graph *, int *, struct Queue *);
-void BFS(graph *, int);
+// void BFS(graph *, int);
 void printGraph(struct Graph *);
 
 int main()
@@ -69,9 +69,7 @@ graph *insertEdge(graph *g, int v1, int v2)
     return g;
 }
 
-void BFS(graph *g, int start)
-{
-}
+
 
 void BFSMain(graph *g, int *visited, struct Queue *q)
 {
