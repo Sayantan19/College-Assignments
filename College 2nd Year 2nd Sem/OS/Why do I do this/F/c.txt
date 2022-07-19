@@ -1,0 +1,8 @@
+
+ 16
+ 00:32
+371 c1.txt
+412 cal.sh
+130 count.sh
+107 f1.txt
+321 theta.txt

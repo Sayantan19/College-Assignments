@@ -1,0 +1,6 @@
+total 0
+-rwxrwxrwx 1 anonymous anonymous 371 Jun 16 01:05 c1.txt
+-rwxrwxrwx 1 anonymous anonymous 412 Jun 15 16:49 cal.sh
+-rwxrwxrwx 1 anonymous anonymous 130 Jun 15 20:30 count.sh
+-rwxrwxrwx 1 anonymous anonymous 107 Jun 15 23:43 f1.txt
+-rwxrwxrwx 1 anonymous anonymous   0 Jun 16 01:13 s1.txt

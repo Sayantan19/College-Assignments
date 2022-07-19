@@ -1,0 +1,7 @@
+total 2
+-rw-r--r-- 1 sayan 197609   0 Jun 15 20:24 alpha.txt
+-rw-r--r-- 1 sayan 197609   0 Jun 15 20:24 beta.txt
+-rw-r--r-- 1 sayan 197609 412 Jun 15 16:49 cal.sh
+-rw-r--r-- 1 sayan 197609 106 Jun 15 20:05 count.sh
+-rw-r--r-- 1 sayan 197609   0 Jun 15 20:25 gamma.txt
+-rw-r--r-- 1 sayan 197609   0 Jun 15 20:25 theta.txt

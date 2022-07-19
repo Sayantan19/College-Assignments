@@ -42,8 +42,14 @@ void BellmanFord(int **edgeList, int v, int e, int start)
             d = edgeList[j][1];
             w = edgeList[j][2];
             if (dist[d] > (dist[s] + w))
+            {
                 dist[d] = dist[s] + w;
+                printf(" %d ",dist[d]);
+            }
+            else
+                printf(" %d ",dist[d]);
         }
+        printf("\n");
     }
 
     for (int i = 0; i < v - 1; i++)
@@ -53,7 +59,7 @@ void BellmanFord(int **edgeList, int v, int e, int start)
             s = edgeList[j][0];
             d = edgeList[j][1];
             w = edgeList[j][2];
-            if (dist[d] > (dist[s] + w))
+            if (dist[d] > (dist[s] + w) && dist[s]!=INF)
             {
                 printf("There exists a negative cycle");
                 exit(0);

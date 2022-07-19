@@ -1,0 +1,15 @@
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+4 S     0     1     0  0  80   0 -   527 -      ?        00:00:00 INIT
+5 S     0     7     1  0  80   0 -   529 -      ?        00:00:00 INIT
+5 S     0     8     7  0  80   0 -   529 -      ?        00:00:00 INIT
+4 S  1000     9     8  0  80   0 -  2542 DO_WAI PTS/0    00:00:00 BASH
+0 R  1000   710     9  0  80   0 -  2634 -      PTS/0    00:00:00 PS
+ONE 
+TOW
+THREE
+FOUR
+FIVE
+SIX
+SEVEN
+EIGHT
+

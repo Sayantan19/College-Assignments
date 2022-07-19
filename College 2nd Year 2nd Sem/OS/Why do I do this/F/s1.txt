@@ -1,0 +1,5 @@
+total 0
+-rwxrwxrwx 1 anonymous anonymous 410 Jun 16 00:32 b.txt
+-rwxrwxrwx 1 anonymous anonymous  72 Jun 16 00:32 c.txt
+-rwxrwxrwx 1 anonymous anonymous   0 Jun 16 01:13 s1.txt
+-rwxrwxrwx 1 anonymous anonymous 321 Jun 15 20:25 theta.txt
